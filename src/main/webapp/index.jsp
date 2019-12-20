@@ -1,5 +1,5 @@
 <html>
 <body>
-<h1>Welcome to Devops Training Session - v1</h1>
+<h1>Welcome to Devops Training Session - Thinknyx technologies </h1>
 </body>
 </html>
