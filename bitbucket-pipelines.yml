@@ -1,0 +1,29 @@
+# This is a sample build configuration for Java – Maven.
+# Check our guides at https://confluence.atlassian.com/x/zd-5Mw for more examples.
+# Only use spaces to indent your .yml configuration.
+# -----
+# You can specify a custom docker image from Docker Hub as your build environment.
+image: maven:3.3.9-jdk-8
+
+pipelines:
+#  default:
+#    - step:
+#        script: # Modify the commands below to build your repository.
+#           - mvn clean install
+#           - mvn -V -B -s settings.xml deploy
+  custom:
+    release:
+    - step:
+        script: # testing manual triggers
+           - git config user.email "kulbhushanm@thinknyx.com"
+           - git config user.name "Kulbhushan Mayer"
+           - git checkout master
+           - openssl aes-256-cbc -pass pass:$OPENSSL_PWD -in private-key.gpg.enc -out private-key.gpg -d
+           - gpg --import private-key.gpg
+           - mvn -V -B -s settings.xml clean release:prepare release:perform -Dusername=kulbhushan_mayer -Dpassword=india@123
+#  branches:
+#    snapshot:
+#    - step:
+#        script: # Modify the commands below to build your repository.
+#           - mvn clean install
+#           - mvn -V -B -s settings.xml deploy
