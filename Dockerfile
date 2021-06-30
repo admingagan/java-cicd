@@ -1,4 +1,4 @@
-FROM tomcat
+FROM tomcat:10.0-jdk11-corretto
 
 #RUN mkdir /config
 #COPY config.cfg /config
