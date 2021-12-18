@@ -1,0 +1,21 @@
+steps:
+  - name: 'maven:3-jdk-8'
+    args:
+      - package
+    entrypoint: mvn
+  - name: ubuntu
+    args:
+      - ls
+    timeout: 100s
+  - name: ubuntu
+    args:
+      - echo
+      - 'hello world, after 60s'
+  - name: gcr.io/cloud-builders/docker
+    args:
+      - build
+      - '-t'
+      - gcr.io/capgemini-sep/myapp
+      - .
+images:
+  - gcr.io/capgemini-sep/myapp
